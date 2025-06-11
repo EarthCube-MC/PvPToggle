@@ -1,9 +1,10 @@
 main: com.github.aasmus.pvptoggle.PvPToggle
+depend: [Towny, SiegeWar]
 softdepend: [PlaceholderAPI, NametagEdit]
 name: PvPToggle
-version: 1.7
-api-version: 1.13
-author: aasmus (with modifications by the Red Fusion Team)
+version: 1.0
+api-version: 1.21
+author: Ranger_Oro (forked from aasmus)
 description: Plugin that allows players to toggle PvP state
 commands:
   pvp:

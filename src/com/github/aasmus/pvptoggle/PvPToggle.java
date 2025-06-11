@@ -15,8 +15,12 @@ import com.github.aasmus.pvptoggle.listeners.PlayerJoin;
 import com.github.aasmus.pvptoggle.listeners.PlayerLeave;
 import com.github.aasmus.pvptoggle.listeners.PvP;
 import com.github.aasmus.pvptoggle.listeners.PlayerChangeWorld;
+import com.github.aasmus.pvptoggle.listeners.WarListener;
 import com.github.aasmus.pvptoggle.utils.PersistentData;
 import com.github.aasmus.pvptoggle.utils.PlaceholderAPIHook;
+import com.palmergames.bukkit.towny.TownyAPI;
+import com.palmergames.bukkit.towny.object.Town;
+import com.github.TownyAdvanced.SiegeWar.SiegeWarAPI;
 
 public class PvPToggle extends JavaPlugin implements Listener {
 	
@@ -25,6 +29,7 @@ public class PvPToggle extends JavaPlugin implements Listener {
 	public static PvPToggle instance;
 	public HashMap<UUID,Boolean> players = new HashMap<>(); //False is pvp on True is pvp off
 	public HashMap<UUID,Date> cooldowns = new HashMap<>();
+	public HashMap<UUID,Boolean> warPlayers = new HashMap<>(); //True means player is in war/siege
 	
 	public PersistentData dataUtils;
 	
@@ -46,6 +51,7 @@ public class PvPToggle extends JavaPlugin implements Listener {
 		Bukkit.getPluginManager().registerEvents(new PlayerLeave(), this);
 		Bukkit.getPluginManager().registerEvents(new PvP(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerChangeWorld(), this);
+		Bukkit.getPluginManager().registerEvents(new WarListener(), this);
 		//register command
 		this.getCommand("pvp").setExecutor(new PvPCommand());
 		
